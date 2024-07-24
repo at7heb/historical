@@ -2,14 +2,17 @@
 
 W. J. Cody wrote a paper, cited below, which describes the process to derive parameters for the double precision square root function on the CDC 3600/3800.
 
-The parameters for the single precision square root function were derived by Hans J. Maehly. Codey describes this process in the Appendix of his paper, along the the note that the derivation was not published. Cody's presentation comes from Maehly's notes.
+The parameters for the single precision square root function were derived by Hans J. Maehly. Cody describes this process in the Appendix of his paper, along with the note that the derivation was not published by Maehly. Cody's presentation comes from Maehly's notes.
 
 ## Algorithm
 
-The square root function represents the argument $x = 2^{2m} * x_0$ where $1/2 \leq x_0 \lt 2$. A hyperbola, fitted to the square root function in that range, is evaluated, creating $x_1$.
-Then $x_2 = {{(x_1 + { x  \over x_1})} \over 2}$ and $x_3 = {{(x_2 + { x  \over x_2})} \over 2}$
+The square root function represents the argument $x = 2^{2m} \times x_0$ where $1/2 \leq x_0 \lt 2$. A hyperbola, fitted to the square root function in that range, is evaluated, creating
 
-$y = sqrt(x)$ is returned as $y = 2^m \times x_3$
+$$x_1 = {{3.0903156} - {8.5500505 \over {3.0903156 + x_0}}}$$
+
+Then the function improves that estimate with two iterations of the Newton-Raphson approximation: $x_2 = {{(x_1 + { x  \over x_1})} \over 2}$ and $x_3 = {{(x_2 + { x  \over x_2})} \over 2}$
+
+$y = sqrt(x)$ is approximates as $y \approx 2^m \times x_3$
 
 ## Citation
 
