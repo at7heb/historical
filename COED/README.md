@@ -40,6 +40,10 @@ I believe this was the last bug corrected in the 940 operating system at NOAA in
 
 The COED system operated with similar reliability.
 
+### Repository Notes
+
+This repository also includes a scanned image of the MODCOMP Classic marketing flyer. COED did not use the Classic. It had MODCOMP II and MODCOMP IV computers.
+
 # Summary
 
 COED was a lot of excellent work, executed over a reasonably short time by a small staff. We did not use formal development procedures. We did not have formal functional tests. The architects were the developers were the system testers were the operations staff.
