@@ -47,13 +47,13 @@ COED was a lot of excellent work, executed over a reasonably short time by a sma
 We knew that message passing between COED and the SDS-940 and the CDC-6600, as well as within the COED network of 4 computers, would be a bottle neck, so we adopted a design philosophy of batching multiple operations into the COIN protocol for terminal control. The 940 COIN implementation would send the COIN operations message when either of these conditions was true:
 
 * it was full
-* it was "old" (a few milliseconds old)
+* it was "old" (by about ten milliseconds)--to keep performance high
 
 ## Afterwords
 
 ### Disclaimer
 
-This represents my personal recollections of work on COED. I'm confident that I have made some mistakes in this. My colleagues may disagree, and I'll incorporate their corrections when and where appropriate.
+This represents my personal recollections of work on COED. I'm confident that I have made some mistakes. My colleagues may disagree, and I'll incorporate their corrections when and where appropriate.
 
 ### N. B
 
