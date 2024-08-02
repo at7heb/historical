@@ -18,9 +18,33 @@ COED replaced the file sysem storage on the 940. The RAD, used for page swapping
 
 The Chrono-Log clock handling.
 
-The Super Assembler (and link editor).
+The Super Assembler.
 
 Auto restart after power failure.
+
+### An Accurate Time of Day Clock for All
+
+Vern Schryver was the architect and implementer for the date and time clock. The COED proposal included Chrono Log clocks, which could synchronize to WWV, so COED had a stable clock reference. Only the two MODCOMP IVs were connected to the clocks, so a means of synchronizing the MODCOMP II clocks was needed. Other requirements:
+
+* If three or few computers crashed, the remaining computer would maintain the best time it could, and update other computers as they returned to service
+
+* A MODCOMP IV's time, referenced from the Chrono Log clock, is the preferred source of time.
+
+Vern's solution was to connect digital I/O signal on each MODCOMP to the other MODCOMPs, using a simple COAX cable. A machine would send a message either announcing a time, announcing a "regime change" for the master clock source, request the time, etc. All the other machines would receive the message and one would process it and reply if necessary.
+
+### The Super Assembler
+
+The Super Assembler deferred expression evaluation until the whole assembly unit had been processed. It was capable of turning a general jump macro into either the short "HOP" instruction of the long "BRU" (branch unconditionally) instruction.
+
+It also had a good macro assembler capability. The Super Assembler was written in-house.
+
+### Auto Restart
+
+The MODCOMPs use magnetic core memory, which retained state indefinitely. The MODCOMPs could detect a power failure, which would cause a very high priority interrupt. The interrupt routine saved the state of the registers in dedicated memory. It also detected the state of the interrupt enable and request bits. Requests in progress were aborted, to ensure they would not do random things as the power went down. I don't remember how requests in progress were maintained so they could be restarted. After saving all possible state, the power off interrupt idled safely so that no further state changes occurred.
+
+When power was restored, the process was reversed and the system restarted.
+
+One could walk up to one of the MODCOMPs, power it off, wait a few moments, and power it back on. It would recover without a hitch. A few years later, as a developer for the 5ESS, I did something similar -- ejecting the circuit card with the active interface module processor. When this capability was mature, the call load simulator reported no errors because the stand-by processor took over seamlessly.
 
 ### My COED involvement
 
