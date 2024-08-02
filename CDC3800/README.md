@@ -12,7 +12,7 @@ $$x_1 = {{3.0903156} - {8.5500505 \over {3.0903156 + x_0}}}$$
 
 Then the function improves that estimate with two iterations of the Newton-Raphson approximation: $x_2 = {{(x_1 + { x  \over x_1})} \over 2}$ and $x_3 = {{(x_2 + { x  \over x_2})} \over 2}$
 
-$y = sqrt(x)$ is approximates as $y \approx 2^m \times x_3$
+$y = sqrt(x)$ is approximated as $y \approx 2^m \times x_3$
 
 ## Citation
 
